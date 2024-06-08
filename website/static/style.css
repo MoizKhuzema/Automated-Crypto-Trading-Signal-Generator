@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background-color: #002a4e; /* Navy blue background color */
+    color: white; /* Default text color */
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.company-box {
+    position: relative;
+    width: 100%;
+    height: 7vh;
+    background-color: #001838;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide overflow to prevent text spilling over */
+}
+
+.gradient-strip {
+    width: 100%;
+    height: 1.5vh;
+    background: linear-gradient(to right, #FF8A80, #FFD180, #AED581, #81D4FA); /* Red to yellow to green to blue */
+}
+
+.slogan {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap; /* Prevent text from wrapping */
+    font-size: 1.2em;
+    font-family: 'Baloo', sans-serif; /* Use the Baloo font for the slogan */
+    color: #FF8A80; /* Initial color matching the first color in the gradient strip */
+
+    /* Animation settings */
+    animation: moveSlogan 10s linear infinite; /* 10s duration, linear easing, infinite loop */
+}
+
+@keyframes moveSlogan {
+    0% {
+        left: 100%; /* Start from the right */
+        color: #FF8A80;
+    }
+    100% {
+        left: -100%; /* Move to the left */
+        color: #81D4FA;
+    }
+}
+
+
+.main-container {
+    display: flex;
+    align-items: center; /* Center the column vertically */
+}
+
+.sidebar {
+    width: 25%;
+    background-color: rgba(9, 66, 116, 0.6); /* Adjust the color and transparency as needed */
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transition: background-color 0.3s ease; /* Smooth transition for the background color */
+}
+
+.sidebar:hover {
+    background-color: rgba(22, 97, 163, 0.8); /* Highlight color on hover */
+}
+
+.info-box {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.info-text {
+    color: #333;
+    font-family: 'YourThemeFont', sans-serif;
+}
+/* Add your additional styling here */
+
+.checklist {
+    margin-top: 15px;
+}
+
+.checklist input[type="checkbox"] {
+    margin-right: 5px;
+    display: block; /* Make checkboxes display as block-level elements */
+}
+
+#generate-signal {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    align-self: center; /* Center the button horizontally */
+    margin-top: 10px; /* Add some margin for separation */
+}

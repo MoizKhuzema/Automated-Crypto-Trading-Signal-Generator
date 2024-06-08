@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo&display=swap">
+    <title>CryptoGPT</title>
+</head>
+<body>
+    <div class="header">
+        <div class="company-box">
+            <div class="slogan">Unlock Your Crypto Potential: Trade Smarter, Not Harder with CryptoGPT!</div>
+        </div>
+        <div class="gradient-strip"></div>
+    </div>
+    <div class="main-container">
+        <div class="sidebar">
+            <label for="time-frame">Time Frame:</label>
+            <select id="time-frame">
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+            </select>
+
+            <label for="trading-strategy">Trading Strategy:</label>
+            <select id="trading-strategy">
+                <option value="breakout">Breakout</option>
+                <option value="breakdown">Breakdown</option>
+            </select>
+
+            <label for="profit-margin">Profit Margin:</label>
+            <input type="range" id="profit-margin" min="1" max="50" value="1">
+            <span id="profit-value">1%</span>
+
+            <label for="risk-tolerance">Risk Tolerance:</label>
+            <input type="range" id="risk-tolerance" min="1" max="50" value="1">
+            <span id="risk-value">1%</span>
+
+            <div class="checklist">
+                <input type="checkbox" id="technical-analysis" name="technical-analysis">
+                <label for="technical-analysis">Technical Analysis</label>
+        
+                <input type="checkbox" id="market-analysis" name="market-analysis">
+                <label for="market-analysis">Market Analysis</label>
+            </div>
+
+            <button id="generate-signal">Generate Signal</button>
+        </div>
+        <div class="info-box">
+            <div class="info-text" id="infoContent">
+                <!-- Content will be dynamically updated here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get the checkboxes and info box content element
+        const technicalAnalysisCheckbox = document.getElementById('technical-analysis');
+        const marketAnalysisCheckbox = document.getElementById('market-analysis');
+        const infoContent = document.getElementById('infoContent');
+
+        // Add event listeners to checkboxes
+        technicalAnalysisCheckbox.addEventListener('change', updateInfoBox);
+        marketAnalysisCheckbox.addEventListener('change', updateInfoBox);
+
+        // Default text
+        let defaultText = `
+            Coin identified: KMDBTC
+            <br>
+            Yes. The expected sell price is 0.00394143, and you should hold it for at least 1 hour. The expected buy price is 0.00392433.
+        `;
+
+        // Function to update the info box content based on selected checkboxes
+        function updateInfoBox() {
+            let content = defaultText; // Start with the default text
+
+            // Check if Technical Analysis checkbox is selected
+            if (technicalAnalysisCheckbox.checked) {
+                content += `
+                    <br><br>
+                    'Upper Band': 0.05249744549466373,
+                    'Middle Band': 0.051798,
+                    'Lower Band': 0.05109855450533626,
+                    // ... Add more technical analysis indicators
+                    'CDL Upside Gap 2 Crows': 0,
+                    'CDL X Side Gap 3 Methods': 0
+                `;
+            }
+
+            // Check if Market Analysis checkbox is selected
+            if (marketAnalysisCheckbox.checked) {
+                content += `
+                    <br><br>
+                    In terms of news sentiment, factors such as staking yield and fee burns have contributed to the positive 
+                    sentiment surrounding Ethereum's performance against Bitcoin. The narrowing gap between the two 
+                    cryptocurrencies on a year-to-date basis and the potential for future growth in the DeFi market also 
+                    support a relatively bullish sentiment towards ETHBTC.
+                `;
+            }
+
+            // Update the info box content
+            infoContent.innerHTML = content;
+        }
+
+        // Call the function initially to display default text
+        updateInfoBox();
+
+
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
